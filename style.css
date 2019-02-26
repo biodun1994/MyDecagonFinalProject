@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 16px;
+}
+
+#logo{
+    height: 1.8rem;
+    position: relative;
+}
+
+#showcase{
+    height: 70vh;
+    background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
+     rgba(40, 180, 131, 0.6)), url(/images/mainBkg.jpg);
+    background-size: cover;
+    background-position: top;
+}
+
+#nav-items{
+    float: right;
+}
+
+#nav-items li{
+    float: left;
+    list-style: none;
+    padding: 0.7rem;
+    color: white;
+    font-weight: bold;
+    margin-right: .8rem;
+}
+
+#nav-items li a{
+    color: white;
+    text-decoration: none;
+}
+
+#nav-items li a:hover{
+    border-bottom: 2px solid white;
+}
+
+.wrapper{   
+    width: 75%;
+    margin: 0 auto;
+}
+
+.button-look{
+    background:#000;
+    padding: 10px;
+    border-radius: .6rem;
+}
+
+
+header{
+    padding: 1rem;
+}
