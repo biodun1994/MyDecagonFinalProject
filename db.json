@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "role": "admin",
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "admin",
+      "id": 1
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "123",
+      "role": "guest",
+      "id": 2
+    },
+    {
+      "email": "",
+      "password": "",
+      "role": "guest",
+      "id": 3
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "",
+      "role": "guest",
+      "id": 4
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "1234",
+      "role": "guest",
+      "id": 5
+    }
+  ]
+}
