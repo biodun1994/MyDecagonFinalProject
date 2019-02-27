@@ -8,27 +8,21 @@
     },
     {
       "email": "olapadeabiodun20@gmail.com",
-      "password": "123",
+      "password": "password",
       "role": "guest",
       "id": 2
     },
     {
-      "email": "",
-      "password": "",
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "12345",
       "role": "guest",
       "id": 3
     },
     {
-      "email": "olapadeabiodun20@gmail.com",
-      "password": "",
+      "email": "olapadeabiodun2@gmail.com",
+      "password": "1234567",
       "role": "guest",
       "id": 4
-    },
-    {
-      "email": "olapadeabiodun20@gmail.com",
-      "password": "1234",
-      "role": "guest",
-      "id": 5
     }
   ]
 }
