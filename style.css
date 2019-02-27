@@ -6,9 +6,13 @@
 
 body{
     font-size: 16px;
+    color: #2D2F48;
+    background: white;
+    font-family: 'Lato', sans-serif;
 }
 
 #logo{
+    float: left;
     height: 1.8rem;
     position: relative;
 }
@@ -19,6 +23,14 @@ body{
      rgba(40, 180, 131, 0.6)), url(/images/mainBkg.jpg);
     background-size: cover;
     background-position: top;
+}
+
+#showcase-about{
+    height: 40vh;
+    background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
+     rgba(40, 180, 131, 0.6)), url(/images/about.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 #nav-items{
@@ -43,10 +55,19 @@ body{
     border-bottom: 2px solid white;
 }
 
+#posts-wrapper{
+    text-align: center;
+}
+
+
+.clear{
+    clear: both;
+}
+
 .wrapper{   
     width: 75%;
     margin: 0 auto;
-    border: 1px solid red;
+    text-align: center;
 }
 
 .button-look{
@@ -55,23 +76,145 @@ body{
     border-radius: .6rem;
 }
 
+.blogPost{
+    float: left;
+    width: 30%;
+	margin: 1.66%;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+
+.blogPost img{
+    height: 8rem;
+    width: 100%;
+}
+
+.blogPost a{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.blogPost p{
+    margin-bottom: 8px;
+}
+
+.blogPost h3{
+    text-transform: capitalize;
+    padding: 5px;
+}
+
+.post-details{
+    border-top: 2px solid #eee;
+    text-align: left;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+
+.post-details i{
+    margin-right: 10px;
+}
+
+
+.daysOld{
+    margin-right: 140px;
+}
+
+.welcome{
+    color: white;
+    text-align: center;
+}
+
+.name{
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 200px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    animation: slideRight ease-out 1.5s;
+}
+
+.slogan{
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 1rem;
+    font-weight: normal;
+    backface-visibility: hidden;
+    animation: slideLeft ease-out 1.5s;
+}
+
+.welcome-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+}
+
+div > h1{
+    margin: 50px 0 30px 0;
+}
+
 header{
     padding: 1rem;
 }
 
 footer{
-    height: 4rem;
-    background: #000;
-    padding: 20px;
-    color: grey;
-    text-align: center;
-    align-content: center;
-}
-
-footer img{
-    float: left;
+    margin-top: 2rem;
+    background: black;
+    height: 100px;
+    color: gray;
 }
 
 footer p{
+    margin-top: 2rem;
+    width: 70%;
     float: right;
 }
+
+footer img{
+    margin-top: 2rem;
+}
+
+
+/*animations*/
+
+@Keyframes slideRight {
+
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@Keyframes slideLeft {
+
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80%{
+        transform: translateX(-10px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
