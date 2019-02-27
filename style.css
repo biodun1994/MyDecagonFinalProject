@@ -59,6 +59,33 @@ body{
     text-align: center;
 }
 
+.subscribe{
+    margin-top: 3rem;
+    height: 15em;
+    background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
+    rgba(40, 180, 131, 0.6)), url(/images/hands.jpg);
+        background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.subscribe input[type="text"]{
+    padding: .5rem;
+    width: 40%;
+    margin-top: 3rem;
+    font-size: 1rem;
+}
+
+.subscribe input[type="submit"]{
+    padding: .5rem;
+    width: 10%;
+    margin-top: 1rem;
+    font-size: 1rem;
+    background: black;
+    border: none;
+    outline: none;
+    color: white;
+}
 
 .clear{
     clear: both;
@@ -162,7 +189,6 @@ header{
 }
 
 footer{
-    margin-top: 2rem;
     background: black;
     height: 100px;
     color: gray;
