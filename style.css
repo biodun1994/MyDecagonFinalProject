@@ -69,7 +69,7 @@ body{
     text-align: center;
 }
 
-.subscribe input[type="text"]{
+.subscribe input[type="email"]{
     padding: .5rem;
     width: 40%;
     margin-top: 3rem;
@@ -244,3 +244,65 @@ footer img{
 
 
 
+/*
+---------------
+LOGIN CSS RULES
+---------------
+*/
+
+#login-container{
+    height: 80vh;
+    width: 100vw;
+    overflow: hidden;
+    background-image:linear-gradient(to right bottom,  rgba(40, 180, 131, 0.6),
+    rgba(255, 255, 255, 0.9)
+   ), url(/images/login1.jpg);
+   background-size: cover;
+   background-position: top;
+}
+
+.forLogin{
+    position: absolute;
+    width: 100%;
+}
+
+.login, .signup{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blog-inputs{
+    padding: .6rem;
+    border: 1.5px solid white;
+    border-radius: 6px;
+    margin: 5px;
+    width: 350px;
+    background: none;
+}
+
+#login-form input[type = "submit"]{
+    float: right;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(130%, 0);
+}
+
+#login-form h3, #signup-form h3 {
+    font-size: 1.7rem;
+    margin: 0 0 1rem .4rem;
+    border-bottom: 3px solid rgba(40, 180, 131, 0.6);
+    width: 5rem;
+}
+
+.blog-button{
+    padding: 0.6rem;
+    border: none;
+    background: black;
+    color: white;
+    width: 90px;
+    margin: 5px 10px;
+    border-radius: 6px;
+}
