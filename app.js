@@ -59,8 +59,11 @@ $(document).ready(() =>{
                 text: 'You can procede to login',
                 type: 'success',
                 confirmButtonText: 'Cool',
-                timer:3000
-              })
+                timer:5000
+              });
+
+            //take user to login page
+            window.location.href="login.html";
         })
         .fail(() =>{
             // console.log("Error postion data");

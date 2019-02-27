@@ -23,6 +23,18 @@
       "password": "1234567",
       "role": "guest",
       "id": 4
+    },
+    {
+      "email": "adelowoademidoyin@gmail.com",
+      "password": "password",
+      "role": "guest",
+      "id": 5
+    },
+    {
+      "email": "talabi@gmail.com",
+      "password": "password",
+      "role": "guest",
+      "id": 6
     }
   ]
 }
