@@ -2,6 +2,56 @@
 //the very beginning of jQuery initiation 
 $(document).ready(() =>{
 
+    let output = '';
+    let parentDiv;
+
+    $.getJSON("http://localhost:3000/posts")
+    .done( (data) =>{
+        console.log(data);
+        $(data).each((index)=>{
+            // console.log(data[index]);
+            // console.log(createPost(data[index]));
+            output += createPost(data[index]);
+            // console.log(output);
+        });
+
+        parentDiv = document.getElementById("posts-wrapper").innerHTML  = output;
+
+        })
+    .fail((data)=>{
+        
+    });
+
+
+    //create a method to display post
+
+    function createPost(post){
+        const newPost =         `
+        <div class="blogPost">
+            <img src="${post.images}" alt="logo">
+            
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <a href="#">see more ></a>
+            <div class="post-details">
+                    <i class="far fa-clock"></i> <span class="daysOld">0 day ago</span><i class="fas fa-pen">
+                    </i>
+            </div>
+        </div>
+        `;
+
+        return newPost;
+    }
+
+
+
+
+
+
+
+
+
+
     //sign-up implementation begins here...
     $("#signup-form").on("submit", (e) =>{
 
