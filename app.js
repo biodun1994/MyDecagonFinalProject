@@ -35,9 +35,14 @@ $(document).ready(() =>{
             $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.children[1].textContent}`)
             .done( (data) =>{
                 let wantToReadPost = data[0];// this is an object of a single post
+                // console.log(JSON.stringify(wantToReadPost))
 
                 // navigate to the page for full read
                 window.location.href="readPosts.html";
+
+
+                //persist wantToReadPost to local storage
+                localStorage.setItem('wantToReadPost', JSON.stringify(wantToReadPost));
 
             });
          }
@@ -160,6 +165,7 @@ $(document).ready(() =>{
         }
     });
     //adding a post to the database starts here
+
 
 
 });

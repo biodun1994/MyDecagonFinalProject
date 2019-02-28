@@ -394,3 +394,45 @@ MODAL POP UP STYLING
     border-radius: 5px;
 }
 
+
+
+/*
+READ FULL BLOG PAGE STYLES
+*/
+
+
+#board{
+    width: 80%;
+    height: 100%;
+    overflow-y: auto;
+    background: #ffffff;
+    margin-top: 5rem;
+    opacity: .7;
+    padding: 5rem;
+}
+
+#board h2{
+    padding: 1rem 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+#board h4{
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+#board img{
+    width: 90%;
+    height: 300px;
+    margin-bottom: 1.5rem;;
+}
+
+#board p{
+    font-size: 1.3rem;
+    text-align: justify;
+    line-height: 2rem;
+    color: black;
+}
+
+
+
