@@ -81,7 +81,7 @@ $(document).ready(() =>{
     });
     //sign-up implementation ends here...
 
-    //login-up implementation begins here...
+    //login implementation begins here...
     $("#login-form").on("submit", (e) =>{
 
         // prevent deafult behaviour
@@ -117,12 +117,21 @@ $(document).ready(() =>{
                     Swal.fire({
                         title: 'Login Successful!',
                         type: 'success',
+                        text: user.email,
                         confirmButtonText: 'Ok',
-                        timer:3000
+                        timer:10000
                       });  
 
+                      //implement login such that
+                      //if(admin){
+                            //allow create, edit and delete post
+                      //}else{
+                            //allow only comment on post
+                      //}
                       //take user to blog page
                       window.location.href="index.html";
+
+                      
                 }
             })
             .fail(()=>{
@@ -134,6 +143,31 @@ $(document).ready(() =>{
                   });
             });
         }
+    });
+    //login implementation ends here...
+
+    //MODAL POP UP implementation ends here...
+
+    //get variables
+    const MODAL = document.getElementById('modal');
+    const CLOSE_MODAL_BUTTON = document.getElementsByClassName('close-modal-button')[0];
+    const COMPOSE_BUTTON = document.getElementById('compose');
+
+    console.log(MODAL, CLOSE_MODAL_BUTTON, COMPOSE_BUTTON);
+
+    COMPOSE_BUTTON.addEventListener("click", ()=>{
+        MODAL.style.display = 'block';
+    });
+
+    CLOSE_MODAL_BUTTON.addEventListener("click", ()=>{
+        MODAL.style.display = 'none';
+    });
+
+    //to close modal by clicking outside the modal content
+    window.addEventListener("click", (e)=>{
+        if(e.target === MODAL){
+        MODAL.style.display = 'none';
+        };
     });
 
 
