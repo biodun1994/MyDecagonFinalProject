@@ -58,6 +58,20 @@
       "images": "images/login1.jpg",
       "details": "\n                                This is my unbiased opinion of the great and overwhelming book This is my unbiased opinion of the great and overwhelming book ",
       "id": 3
+    },
+    {
+      "title": "Hal of a yellow sun review",
+      "description": "This is my unbiased opinion of the great and overwhelming book ",
+      "images": "images/login1.jpg",
+      "details": "\n                                This is my unbiased opinion of the great and overwhelming book This is my unbiased opinion of the great and overwhelming book ",
+      "id": 3
+    },
+    {
+      "title": "Event Delegation",
+      "description": "After I implemented Event Delegation, I shouted",
+      "images": "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "details": "It gave me so much issues, it was such a pain in the ass. but hurray i got past it\n                                ",
+      "id": 4
     }
   ]
 }

@@ -2,13 +2,20 @@
 //the very beginning of jQuery initiation 
 $(document).ready(() =>{
 
+    let ALL_POSTS;
     let output = '';
     let parentDiv;
-
+    //FETCHING POST FROM DB IMPLEMENTATION STARTS
     $.getJSON("http://localhost:3000/posts")
     .done( (data) =>{
+        ALL_POSTS = data;
+        // console.log(ALL_POSTS);
+        // console.log("ALL POSTS" + ALL_POSTS);
         console.log(data);
-        $(data).each((index)=>{
+        let reversedData = data.reverse();
+        console.log(reversedData);
+
+        $(reversedData).each((index)=>{
             // console.log(data[index]);
             // console.log(createPost(data[index]));
             output += createPost(data[index]);
@@ -22,6 +29,21 @@ $(document).ready(() =>{
         
     });
 
+    document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(e.target.classList.contains('see-more')){
+            $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.children[1].textContent}`)
+            .done( (data) =>{
+                let wantToReadPost = data[0];// this is an object of a single post
+
+                // navigate to the page for full read
+                window.location.href="readPosts.html";
+
+            });
+         }
+    });
+
+
 
     //create a method to display post
 
@@ -29,10 +51,9 @@ $(document).ready(() =>{
         const newPost =         `
         <div class="blogPost">
             <img src="${post.images}" alt="logo">
-            
             <h3>${post.title}</h3>
             <p>${post.description}</p>
-            <a href="#">see more ></a>
+            <a href="#"  class="see-more" id="see-more-link">see more ></a>
             <div class="post-details">
                     <i class="far fa-clock"></i> <span class="daysOld">0 day ago</span><i class="fas fa-pen">
                     </i>
@@ -42,12 +63,9 @@ $(document).ready(() =>{
 
         return newPost;
     }
+    //FETCHING POST FROM DB IMPLEMENTATION ENDS
 
-
-
-
-
-
+    
 
 
 
@@ -220,6 +238,34 @@ $(document).ready(() =>{
         MODAL.style.display = 'none';
         };
     });
+
+
+    // //SECOND MODAL SETUP
+
+    // //get variables
+    // const MODAL_ONE = document.getElementById('modal-one');
+    // const CLOSE_MODAL_BUTTON_ONE = document.getElementsByClassName('close-modal-button-one')[0];
+    // const READ_POST_BUTTON = document.getElementsByClassName('.see-more');
+
+
+    // console.log(MODAL_ONE, CLOSE_MODAL_BUTTON_ONE, SEEMORE_BUTTON);
+
+    // COMPOSE_BUTTON.addEventListener("click", ()=>{
+    //     MODAL.style.display = 'block';
+    // });
+
+    // CLOSE_MODAL_BUTTON.addEventListener("click", ()=>{
+    //     MODAL.style.display = 'none';
+    // });
+
+    // //to close modal by clicking outside the modal content
+    // window.addEventListener("click", (e)=>{
+    //     if(e.target === MODAL){
+    //     MODAL.style.display = 'none';
+    //     };
+    // });
+
+    // //SECOND MODAL POP UP ENDS
 
     //adding a post to the database starts here
     $("#submit-post").on("click", (e)=>{

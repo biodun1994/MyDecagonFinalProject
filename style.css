@@ -113,6 +113,10 @@ body{
     border-radius: 10px;
 }
 
+.blogPost:hover{
+    cursor: pointer;
+}
+
 .blogPost img{
     height: 8rem;
     width: 100%;
