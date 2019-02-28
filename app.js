@@ -11,9 +11,9 @@ $(document).ready(() =>{
         ALL_POSTS = data;
         // console.log(ALL_POSTS);
         // console.log("ALL POSTS" + ALL_POSTS);
-        console.log(data);
+        // console.log(data);
         let reversedData = data.reverse();
-        console.log(reversedData);
+        // console.log(reversedData);
 
         $(reversedData).each((index)=>{
             // console.log(data[index]);
@@ -29,6 +29,8 @@ $(document).ready(() =>{
         
     });
 
+    //read more on all blog posts implemented
+    //using event delegation
     document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
         e.preventDefault();
         if(e.target.classList.contains('see-more')){
@@ -48,6 +50,29 @@ $(document).ready(() =>{
          }
     });
 
+    //delete blogpost implementation using event delegation
+    document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(e.target.classList.contains('fa-trash-alt')){
+            console.log("i clicked trash");
+
+            $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.parentElement.children[1].textContent}`)
+            .done( (data) =>{
+                console.log(data[0]);
+
+                $.ajax({
+                    type: "DELETE",
+                    url: `http://localhost:3000/posts/${data[0].id}`,
+                    success : ()=>{
+                        console.log("deleted");
+                    }
+                       
+                });
+
+            });
+           
+        }
+    });
 
 
     //create a method to display post
@@ -61,7 +86,7 @@ $(document).ready(() =>{
             <a href="#"  class="see-more" id="see-more-link">see more ></a>
             <div class="post-details">
                     <i class="far fa-clock"></i> <span class="daysOld">0 day ago</span><i class="fas fa-pen">
-                    </i>
+                    </i><i class="fas fa-trash-alt"></i>    
             </div>
         </div>
         `;

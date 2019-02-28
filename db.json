@@ -35,30 +35,21 @@
       "password": "password",
       "role": "guest",
       "id": 6
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "work",
+      "role": "guest",
+      "id": 7
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "uuuu",
+      "role": "guest",
+      "id": 8
     }
   ],
   "posts": [
-    {
-      "title": "My very first post",
-      "description": "this is my very first post and i am excited while posting it",
-      "images": "images/login1.jpg",
-      "details": "This is a post about a softaware development pic i picked from google                      \n                                ",
-      "id": 1
-    },
-    {
-      "title": "My awesome post",
-      "description": "Feeling awesome, so I decided to publish an awesome post",
-      "images": "images/login1.jpg",
-      "details": "that picture over there, google owns it.\n                                ",
-      "id": 2
-    },
-    {
-      "title": "Hal of a yellow sun review",
-      "description": "This is my unbiased opinion of the great and overwhelming book ",
-      "images": "images/login1.jpg",
-      "details": "\n                                This is my unbiased opinion of the great and overwhelming book This is my unbiased opinion of the great and overwhelming book ",
-      "id": 3
-    },
     {
       "title": "Hal of a yellow sun review",
       "description": "This is my unbiased opinion of the great and overwhelming book ",

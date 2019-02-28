@@ -151,7 +151,11 @@ body{
 
 
 .daysOld{
-    margin-right: 140px;
+    margin-right: 110px;
+}
+
+.fa-pen{
+    margin-right: 20px;
 }
 
 .welcome{
