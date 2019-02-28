@@ -1,3 +1,4 @@
+
 //the very beginning of jQuery initiation 
 $(document).ready(() =>{
 
@@ -153,7 +154,7 @@ $(document).ready(() =>{
     const CLOSE_MODAL_BUTTON = document.getElementsByClassName('close-modal-button')[0];
     const COMPOSE_BUTTON = document.getElementById('compose');
 
-    console.log(MODAL, CLOSE_MODAL_BUTTON, COMPOSE_BUTTON);
+    // console.log(MODAL, CLOSE_MODAL_BUTTON, COMPOSE_BUTTON);
 
     COMPOSE_BUTTON.addEventListener("click", ()=>{
         MODAL.style.display = 'block';
@@ -169,6 +170,75 @@ $(document).ready(() =>{
         MODAL.style.display = 'none';
         };
     });
+
+    //adding a post to the database starts here
+    $("#submit-post").on("click", (e)=>{
+
+        //prevent default
+        e.preventDefault();
+        
+        if($("#title").val() === '' || 
+            $("#description").val() === '' ||
+            $("#image-link").val() === '' ||
+            $("#details").val() === ''
+        ){
+        console.log("all fieldsrequired");
+            Swal.fire({
+                title: 'Caution!',
+                text: 'All felds is required!',
+                type: 'error',
+                confirmButtonText: 'Ok',
+                timer:3000
+              });
+
+        }else{
+            //all fields are filled
+
+            const post = {
+                    title : $("#title").val(),
+                    description : $("#description").val(),
+                    images: $("#image-link").val(),
+                    details: $("#details").val()
+            }
+
+            // console.log(post);
+
+        //making AJAx POST call
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/posts",
+            data: post,
+            dataType: "json",
+            encode: true
+        })
+        .done(() =>{
+            // console.log("Data posted successfully");
+            Swal.fire({
+                title: 'Successful!',
+                text: 'Post Published',
+                type: 'success',
+                confirmButtonText: 'Cool',
+                timer:5000
+              });
+
+            //take user to login page
+            window.location.href="index.html";
+        })
+        .fail(() =>{
+            // console.log("Error postion data");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Sorry, an error occurred',
+                type: 'error',
+                confirmButtonText: 'Try again',
+                timer:3000
+              })
+        });
+
+        $("#signup-form").trigger("reset");
+        }
+    });
+    //adding a post to the database starts here
 
 
 });

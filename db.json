@@ -36,5 +36,21 @@
       "role": "guest",
       "id": 6
     }
+  ],
+  "posts": [
+    {
+      "title": "My very first post",
+      "description": "this is my very first post and i am excited",
+      "images": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fsdtimes.com%2Fwp-content%2Fuploads%2F2017%2F10%2FIMG_1463.png&imgrefurl=https%3A%2F%2Fsdtimes.com%2Fcollaboration-software-development-people-tools-run-show%2F&docid=XfmNPdmVGQcRVM&tbnid=QzTmK4D_DOkoCM%3A&vet=10ahUKEwj8-53Fmt3gAhVbBWMBHXoWCVoQMwhrKAIwAg..i&w=1400&h=820&bih=695&biw=1366&q=software%20development&ved=0ahUKEwj8-53Fmt3gAhVbBWMBHXoWCVoQMwhrKAIwAg&iact=mrc&uact=8",
+      "details": "This is a post about a softaware development pic i picked from google                      \n                                ",
+      "id": 1
+    },
+    {
+      "title": "My awesome post",
+      "description": "Feeling awesome, so I decided to publish an awesome post",
+      "images": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fsdtimes.com%2Fwp-content%2Fuploads%2F2017%2F10%2FIMG_1463.png&imgrefurl=https%3A%2F%2Fsdtimes.com%2Fcollaboration-software-development-people-tools-run-show%2F&docid=XfmNPdmVGQcRVM&tbnid=QzTmK4D_DOkoCM%3A&vet=10ahUKEwj8-53Fmt3gAhVbBWMBHXoWCVoQMwhrKAIwAg..i&w=1400&h=820&bih=695&biw=1366&q=software%20development&ved=0ahUKEwj8-53Fmt3gAhVbBWMBHXoWCVoQMwhrKAIwAg&iact=mrc&uact=8",
+      "details": "that picture over there, google owns it.\n                                ",
+      "id": 2
+    }
   ]
 }
