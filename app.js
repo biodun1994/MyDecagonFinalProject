@@ -2,6 +2,9 @@
 //the very beginning of jQuery initiation 
 $(document).ready(() =>{
 
+    //check if user is logged in
+    // isLoggedIn()
+
     let ALL_POSTS;
     let output = '';
     let parentDiv;
@@ -11,9 +14,9 @@ $(document).ready(() =>{
         ALL_POSTS = data;
         // console.log(ALL_POSTS);
         // console.log("ALL POSTS" + ALL_POSTS);
-        console.log(data);
+        // console.log(data);
         let reversedData = data.reverse();
-        console.log(reversedData);
+        // console.log(reversedData);
 
         $(reversedData).each((index)=>{
             // console.log(data[index]);
@@ -29,20 +32,149 @@ $(document).ready(() =>{
         
     });
 
+    //read more on all blog posts implemented
+    //using event delegation
     document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
         e.preventDefault();
         if(e.target.classList.contains('see-more')){
             $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.children[1].textContent}`)
             .done( (data) =>{
                 let wantToReadPost = data[0];// this is an object of a single post
+                // console.log(JSON.stringify(wantToReadPost))
 
                 // navigate to the page for full read
                 window.location.href="readPosts.html";
+
+
+                //persist wantToReadPost to local storage
+                localStorage.setItem('wantToReadPost', JSON.stringify(wantToReadPost));
 
             });
          }
     });
 
+    //delete blogpost implementation using event delegation
+    document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
+        e.preventDefault();
+        if(e.target.classList.contains('fa-trash-alt')){
+            console.log("i clicked trash");
+
+            $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.parentElement.children[1].textContent}`)
+            .done( (data) =>{
+                console.log(data[0]);
+
+                $.ajax({
+                    type: "DELETE",
+                    url: `http://localhost:3000/posts/${data[0].id}`,
+                    success : ()=>{
+                        console.log("deleted");
+                    }
+                       
+                });
+
+            });
+           
+        }
+    });
+
+
+
+    //edit and update blog post
+
+    document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
+        e.preventDefault();
+
+
+
+        if(e.target.classList.contains('fa-pen')){
+            console.log("i clicked trash");
+
+            $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.parentElement.children[1].textContent}`)
+            .done( (data) =>{
+
+                const objId = data[0].id;
+                //open up modal pop-up
+                $('#title-update').val(data[0].title);
+                $('#description-update').val(data[0].description);
+                $('#image-link-update').val(data[0].images);
+                $('#details-update').val(data[0].details);
+
+                MODAL_UPDATE.style.display = 'block';
+
+
+                //update starts here
+
+                $("#update-post").on('submit', (e)=>{
+
+                    console.log("I AM IN THE PUT METHOD");
+
+                    e.preventDefault();
+
+                    if($("#title-update").val() === '' || 
+                    $("#description-update").val() === '' ||
+                    $("#image-link-update").val() === '' ||
+                    $("#details-update").val() === ''
+                ){
+                console.log("all fieldsrequired");
+                    Swal.fire({
+                        title: 'Caution!',
+                        text: 'All felds is required!',
+                        type: 'error',
+                        confirmButtonText: 'Ok',
+                        timer:3000
+                      });
+        
+                }else{
+                    //all fields are filled
+        
+                    const updatedPost = {
+                            title : $("#title-update").val(),
+                            description : $("#description-update").val(),
+                            images: $("#image-link-update").val(),
+                            details: $("#details-update").val()
+                    }
+        
+                 console.log(data[0], objId);   
+                //making AJAx POST call
+                $.ajax({
+                    type: "PUT",
+                    url: `http://localhost:3000/posts/${objId}`,
+                    data: updatedPost,
+                })
+                .done(() =>{
+                    // console.log("Data posted successfully");
+                    Swal.fire({
+                        title: 'Successful!',
+                        text: 'Post Updated',
+                        type: 'success',
+                        confirmButtonText: 'Cool',
+                        timer:5000
+                      });
+        
+                    //take user to login page
+                    window.location.href="index.html";
+                })
+                .fail(() =>{
+                    // console.log("Error postion data");
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Sorry, an error occurred',
+                        type: 'error',
+                        confirmButtonText: 'Try again',
+                        timer:3000
+                      })
+                });
+        
+                $("#signup-form").trigger("reset");
+                }
+                });
+                
+
+                //update ends here
+            });
+           
+        }
+    });
 
 
     //create a method to display post
@@ -56,7 +188,7 @@ $(document).ready(() =>{
             <a href="#"  class="see-more" id="see-more-link">see more ></a>
             <div class="post-details">
                     <i class="far fa-clock"></i> <span class="daysOld">0 day ago</span><i class="fas fa-pen">
-                    </i>
+                    </i><i class="fas fa-trash-alt"></i>    
             </div>
         </div>
         `;
@@ -65,154 +197,6 @@ $(document).ready(() =>{
     }
     //FETCHING POST FROM DB IMPLEMENTATION ENDS
 
-
-    // //sign-up implementation begins here...
-    // $("#signup-form").on("submit", (e) =>{
-    //     console.log("sign up button clicked");
-    //     //prevents default behaviour
-    //     e.preventDefault();
-
-    //     //input validations
-    //     if($("#reg-email").val() === ''){
-    //         // console.log("email is required");
-    //         Swal.fire({
-    //             title: 'Caution!',
-    //             text: 'Email is required!',
-    //             type: 'error',
-    //             confirmButtonText: 'Ok',
-    //             timer:3000
-    //           });
-    //     }else if($("#reg-password").val() === '' || $("#cfm-password").val() === ''){
-    //         Swal.fire({
-    //             title: 'Caution!',
-    //             text: 'Password is required!',
-    //             type: 'error',
-    //             confirmButtonText: 'Ok',
-    //             timer:3000
-    //           });
-    //     }else if($("#reg-password").val() !== $("#cfm-password").val()){
-    //         // console.log($("#reg-password").val(), $("#cfm-password").val());
-    //         // console.log("passwords do not match");
-    //         Swal.fire({
-    //             title: 'Caution!',
-    //             text: "Password Fields didn't match!",
-    //             type: 'error',
-    //             confirmButtonText: 'Try Again!',
-    //             timer:3000
-    //           });
-    //     }else{
-    //         //if inputs are valid, then make object of newuser
-    //         //from data received 
-    //         const newUser = {
-    //             email: $("#reg-email").val(),
-    //             password: $("#reg-password").val(),
-    //             role:"guest"
-    //         }
-            
-    //     //making AJAx POST call
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "http://localhost:3000/users",
-    //         data: newUser,
-    //         dataType: "json",
-    //         encode: true
-    //     })
-    //     .done(() =>{
-    //         // console.log("Data posted successfully");
-    //         Swal.fire({
-    //             title: 'Successful!',
-    //             text: 'You can procede to login',
-    //             type: 'success',
-    //             confirmButtonText: 'Cool',
-    //             timer:5000
-    //           });
-
-    //         //take user to login page
-    //         window.location.href="login.html";
-    //     })
-    //     .fail(() =>{
-    //         // console.log("Error postion data");
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: 'Sorry, an error occurred',
-    //             type: 'error',
-    //             confirmButtonText: 'Try again',
-    //             timer:3000
-    //           })
-    //     });
-
-    //     $("#signup-form").trigger("reset");
-    //     }
-    // });
-    // //sign-up implementation ends here...
-
-    // //login implementation begins here...
-    // $("#login-form").on("submit", (e) =>{
-
-    //     console.log("login  button clicked");
-
-
-    //     // prevent deafult behaviour
-    //     e.preventDefault();
-
-    //     //input validations
-    //     if($("#email").val() === "" || $("#password").val() === ""){
-    //         // console.log("button working");
-    //         Swal.fire({
-    //             title: 'Caution!',
-    //             text: 'All felds is required!',
-    //             type: 'error',
-    //             confirmButtonText: 'Ok',
-    //             timer:3000
-    //           });
-    //     }else{
-    //         const user = {
-    //             email:$("#email").val(),
-    //             password: $("#password").val()
-    //         }
-    //         $.getJSON("http://localhost:3000/users", user)
-    //         .done( (data) =>{
-    //             // console.log(data);
-    //             if(data.length === 0){
-    //                 Swal.fire({
-    //                     title: 'Error!',
-    //                     text: 'wrong password or email',
-    //                     type: 'error',
-    //                     confirmButtonText: 'Try Again',
-    //                     timer:3000
-    //                   });
-    //             }else{
-    //                 Swal.fire({
-    //                     title: 'Login Successful!',
-    //                     type: 'success',
-    //                     text: user.email,
-    //                     confirmButtonText: 'Ok',
-    //                     timer:10000
-    //                   });  
-
-    //                   //implement login such that
-    //                   //if(admin){
-    //                         //allow create, edit and delete post
-    //                   //}else{
-    //                         //allow only comment on post
-    //                   //}
-    //                   //take user to blog page
-    //                   window.location.href="index.html";
-
-                      
-    //             }
-    //         })
-    //         .fail(()=>{
-    //             Swal.fire({
-    //                 title: 'Error making request!',
-    //                 type: 'error',
-    //                 confirmButtonText: 'Try Again',
-    //                 timer:3000
-    //               });
-    //         });
-    //     }
-    // });
-    // //login implementation ends here...
 
     //MODAL POP UP implementation ends here...
 
@@ -239,38 +223,41 @@ $(document).ready(() =>{
     });
 
 
-    // //SECOND MODAL SETUP
+     //MODAL-UPDATE POP UP implementation ends here...
 
-    // //get variables
-    // const MODAL_ONE = document.getElementById('modal-one');
-    // const CLOSE_MODAL_BUTTON_ONE = document.getElementsByClassName('close-modal-button-one')[0];
-    // const READ_POST_BUTTON = document.getElementsByClassName('.see-more');
+    //get variables
+    const MODAL_UPDATE = document.getElementById('modal-update');
+    const CLOSE_MODAL_BUTTON_UPDATE = document.getElementsByClassName('close-modal-button-update')[0];
+
+    // console.log(MODAL, CLOSE_MODAL_BUTTON, COMPOSE_BUTTON);
+
+   
+    CLOSE_MODAL_BUTTON_UPDATE.addEventListener("click", ()=>{
+        MODAL_UPDATE.style.display = 'none';
+    });
 
 
-    // console.log(MODAL_ONE, CLOSE_MODAL_BUTTON_ONE, SEEMORE_BUTTON);
+    window.addEventListener("click", (e)=>{
+        if(e.target === MODAL){
+        MODAL_UPDATE.style.display = 'none';
+        };
+    });
 
-    // COMPOSE_BUTTON.addEventListener("click", ()=>{
-    //     MODAL.style.display = 'block';
-    // });
 
-    // CLOSE_MODAL_BUTTON.addEventListener("click", ()=>{
-    //     MODAL.style.display = 'none';
-    // });
-
-    // //to close modal by clicking outside the modal content
-    // window.addEventListener("click", (e)=>{
-    //     if(e.target === MODAL){
-    //     MODAL.style.display = 'none';
-    //     };
-    // });
-
-    // //SECOND MODAL POP UP ENDS
-
+    
     //adding a post to the database starts here
     $("#submit-post").on("click", (e)=>{
 
+        // console.log($('#update-button'));
+
+
         //prevent default
         e.preventDefault();
+
+        document.getElementById("update-post").addEventListener("click", (e)=>{
+            e.preventDefault();
+            console.log("update clicked");
+        });
         
         if($("#title").val() === '' || 
             $("#description").val() === '' ||
@@ -334,6 +321,63 @@ $(document).ready(() =>{
         }
     });
     //adding a post to the database starts here
+
+
+    //subscribing for emails notifications
+    $('#subscribe-form').on('submit', (e)=>{
+
+
+        e.preventDefault();
+        console.log("me clicked");
+        if($('#subscribe-email').val() === ''){
+            //sweet alert
+            Swal.fire({
+                title: 'Caution!',
+                text: 'Email field is required!',
+                type: 'error',
+                confirmButtonText: 'Ok',
+                timer:3000
+              });
+        }else{
+            const email = {
+                email : $('#subscribe-email').val()
+            }
+
+        //making AJAx POST call
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/subscribers",
+            data: email,
+            dataType: "json",
+            encode: true
+        })
+        .done(() =>{
+            // console.log("Data subscribed successfully");
+            Swal.fire({
+                title: 'Successful!',
+                text: 'Thanks for subscribing',
+                type: 'success',
+                confirmButtonText: 'Cool',
+                timer:5000
+              });
+
+            $("#subscribe-email").val('');
+
+        })
+        .fail(() =>{
+            // console.log("Error postion data");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Sorry, an error occurred',
+                type: 'error',
+                confirmButtonText: 'Try again',
+                timer:3000
+              })
+        });
+
+
+        }
+    });
 
 
 });

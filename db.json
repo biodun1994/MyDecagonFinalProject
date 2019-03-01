@@ -35,43 +35,56 @@
       "password": "password",
       "role": "guest",
       "id": 6
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "work",
+      "role": "guest",
+      "id": 7
+    },
+    {
+      "email": "olapadeabiodun20@gmail.com",
+      "password": "uuuu",
+      "role": "guest",
+      "id": 8
     }
   ],
   "posts": [
     {
-      "title": "My very first post",
-      "description": "this is my very first post and i am excited while posting it",
-      "images": "images/login1.jpg",
-      "details": "This is a post about a softaware development pic i picked from google                      \n                                ",
-      "id": 1
-    },
-    {
-      "title": "My awesome post",
-      "description": "Feeling awesome, so I decided to publish an awesome post",
-      "images": "images/login1.jpg",
-      "details": "that picture over there, google owns it.\n                                ",
-      "id": 2
-    },
-    {
-      "title": "Hal of a yellow sun review",
-      "description": "This is my unbiased opinion of the great and overwhelming book ",
-      "images": "images/login1.jpg",
-      "details": "\n                                This is my unbiased opinion of the great and overwhelming book This is my unbiased opinion of the great and overwhelming book ",
-      "id": 3
-    },
-    {
-      "title": "Hal of a yellow sun review",
-      "description": "This is my unbiased opinion of the great and overwhelming book ",
-      "images": "images/login1.jpg",
-      "details": "\n                                This is my unbiased opinion of the great and overwhelming book This is my unbiased opinion of the great and overwhelming book ",
-      "id": 3
-    },
-    {
-      "title": "Event Delegation",
-      "description": "After I implemented Event Delegation, I shouted",
+      "title": "Event Delegation edited new",
+      "description": "After I implemented Event Delegation, I shouted! I shouted!! I shouted!!! I shouted!!!",
       "images": "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       "details": "It gave me so much issues, it was such a pain in the ass. but hurray i got past it\n                                ",
       "id": 4
+    },
+    {
+      "title": "2 weeks in the life of a Decadev",
+      "description": "My experience as a potential decadeveloper, adventurous, enthusiastic, promising",
+      "images": "https://cdn-images-1.medium.com/max/1200/1*Y0UYuGcFGSCfs5Eexafq6A.png",
+      "details": "I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.\n                                ",
+      "id": 6
+    }
+  ],
+  "subscribers": [
+    {
+      "email": "olapade@gmail.com",
+      "id": 1
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 2
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 3
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 4
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 5
     }
   ]
 }

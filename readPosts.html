@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Read Posts Fully</title>
+    <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Full blog Post and comments here</h1>
+
+        <header class="forReadPost">
+                <div class="wrapper">
+                     <a href="#"><img src="images/decaLogo.png" alt="logo" id="logo">    </a>
+                 <ul id="nav-items" >
+                     <li class="nav-item active"><a href="index.html" style="color:#2D2F48">Blog</a></li>
+                     <!-- <li class="nav-item"><a href="#">Compose</a></li> -->
+                     <li class="nav-item button-look"><a href="signup.html">SignUp</a></li>
+                     <li class="nav-item button-look"><a href="login.html">Login</a></li>                       
+                 </ul>
+
+                </div>
+
+         </header>
+         <div id="blog-container">
+
+            <div class="wrapper" id="board" >
+                <h2 id="title"> </h2>
+                <h4 id="description"> </h4>
+                <img src="images/mainBkg.jpg" alt="blog post image" id="images">
+                <p id="details"></p>
+    
+            </div>
+        
+    <div id="readPost-container">      
+
+    </div>
+
+    
+
+    </div>
+
+    
+
+    <footer>
+            <div class="wrapper">
+                    <a href="#"><img src="images/decaLogo.png" alt="logo" id="logo"></a>
+                    <p>&copy; copyright 2018 <strong>Decagon DecaBlog.</strong></p>
+            </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+    <script src="readPosts.js"></script>
+
 </body>
 </html>

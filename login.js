@@ -27,6 +27,8 @@ $(document).ready(()=>{
             $.getJSON("http://localhost:3000/users", user)
             .done( (data) =>{
                 // console.log(data);
+
+
                 if(data.length === 0){
                     Swal.fire({
                         title: 'Error!',
@@ -43,6 +45,8 @@ $(document).ready(()=>{
                         confirmButtonText: 'Ok',
                         timer:10000
                       });  
+
+                      persistUserToLS(user.email);//call function to persist user to LS
 
                       //implement login such that
                       //if(admin){
@@ -68,5 +72,22 @@ $(document).ready(()=>{
     });
     //login implementation ends here...
 
+                          //this function persists user email
+                          function persistUserToLS(email){
+                          
+                            let blogUser;
+        
+                            if(localStorage.getItem('blogUser') !== null){
+                                blogUser = JSON.parse(localStorage.getItem('blogUser'))
+                            }else{
+                                blogUser = [];
+                            }
+        
+                            if(blogUser.indexOf(email) === -1){
+                                blogUser.push(email);
+                            }
+  
+                            localStorage.setItem('blogUser',JSON.stringify(blogUser));
+                        }
 
 });
