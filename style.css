@@ -22,7 +22,7 @@ body{
     background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
      rgba(40, 180, 131, 0.6)), url(images/mainBkg.jpg);
     background-size: cover;
-    background-position: top;
+    background-position: bottom;
 }
 
 #showcase-about{
@@ -339,7 +339,7 @@ LOGIN CSS RULES
 MODAL POP UP STYLING
 */
 
-.modal-box{
+.modal-box, .modalbox-update{
     display: none;
     position: fixed;
     z-index: 6;
@@ -353,7 +353,7 @@ MODAL POP UP STYLING
     /* animation-duration: 1s; */
 }
 
-.modal-contents{
+.modal-contents, .modal-contents-update{
     background-color: #f4f4f4;
     margin: 4% auto;
     padding: 1.3rem;
@@ -365,14 +365,16 @@ MODAL POP UP STYLING
     /*add box shadow*/
 }
 
-.close-modal-button{
+.close-modal-button, .close-modal-button-update{
     float: right;
     color: #ccc;
     font-size: 1.8rem;
 }
 
 .close-modal-button:hover,
-.close-modal-button:focus{
+.close-modal-button:focus,
+.close-modal-button-update:hover,
+.close-modal-button-update:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -404,7 +406,7 @@ MODAL POP UP STYLING
     background: none;
 }
 
-#create-post input[type="submit"]{
+#create-post input[type="submit"], #update-post input[type="submit"]{
     padding: .5rem;
     width: 20%;
     margin-top: 1rem;

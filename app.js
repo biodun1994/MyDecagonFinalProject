@@ -78,6 +78,105 @@ $(document).ready(() =>{
     });
 
 
+
+    //edit and update blog post
+
+    document.querySelector('#posts-wrapper').addEventListener('click', (e)=>{
+        e.preventDefault();
+
+
+
+        if(e.target.classList.contains('fa-pen')){
+            console.log("i clicked trash");
+
+            $.getJSON(`http://localhost:3000/posts/?title=${e.target.parentElement.parentElement.children[1].textContent}`)
+            .done( (data) =>{
+
+                const objId = data[0].id;
+                //open up modal pop-up
+                $('#title-update').val(data[0].title);
+                $('#description-update').val(data[0].description);
+                $('#image-link-update').val(data[0].images);
+                $('#details-update').val(data[0].details);
+
+                MODAL_UPDATE.style.display = 'block';
+
+
+                //update starts here
+
+                $("#update-post").on('submit', (e)=>{
+
+                    console.log("I AM IN THE PUT METHOD");
+
+                    e.preventDefault();
+
+                    if($("#title-update").val() === '' || 
+                    $("#description-update").val() === '' ||
+                    $("#image-link-update").val() === '' ||
+                    $("#details-update").val() === ''
+                ){
+                console.log("all fieldsrequired");
+                    Swal.fire({
+                        title: 'Caution!',
+                        text: 'All felds is required!',
+                        type: 'error',
+                        confirmButtonText: 'Ok',
+                        timer:3000
+                      });
+        
+                }else{
+                    //all fields are filled
+        
+                    const updatedPost = {
+                            title : $("#title-update").val(),
+                            description : $("#description-update").val(),
+                            images: $("#image-link-update").val(),
+                            details: $("#details-update").val()
+                    }
+        
+                 console.log(data[0], objId);   
+                //making AJAx POST call
+                $.ajax({
+                    type: "PUT",
+                    url: `http://localhost:3000/posts/${objId}`,
+                    data: updatedPost,
+                })
+                .done(() =>{
+                    // console.log("Data posted successfully");
+                    Swal.fire({
+                        title: 'Successful!',
+                        text: 'Post Updated',
+                        type: 'success',
+                        confirmButtonText: 'Cool',
+                        timer:5000
+                      });
+        
+                    //take user to login page
+                    window.location.href="index.html";
+                })
+                .fail(() =>{
+                    // console.log("Error postion data");
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Sorry, an error occurred',
+                        type: 'error',
+                        confirmButtonText: 'Try again',
+                        timer:3000
+                      })
+                });
+        
+                $("#signup-form").trigger("reset");
+                }
+                });
+                
+
+                //update ends here
+            });
+           
+        }
+    });
+
+
     //create a method to display post
 
     function createPost(post){
@@ -124,12 +223,41 @@ $(document).ready(() =>{
     });
 
 
+     //MODAL-UPDATE POP UP implementation ends here...
+
+    //get variables
+    const MODAL_UPDATE = document.getElementById('modal-update');
+    const CLOSE_MODAL_BUTTON_UPDATE = document.getElementsByClassName('close-modal-button-update')[0];
+
+    // console.log(MODAL, CLOSE_MODAL_BUTTON, COMPOSE_BUTTON);
+
+   
+    CLOSE_MODAL_BUTTON_UPDATE.addEventListener("click", ()=>{
+        MODAL_UPDATE.style.display = 'none';
+    });
+
+
+    window.addEventListener("click", (e)=>{
+        if(e.target === MODAL){
+        MODAL_UPDATE.style.display = 'none';
+        };
+    });
+
+
     
     //adding a post to the database starts here
     $("#submit-post").on("click", (e)=>{
 
+        // console.log($('#update-button'));
+
+
         //prevent default
         e.preventDefault();
+
+        document.getElementById("update-post").addEventListener("click", (e)=>{
+            e.preventDefault();
+            console.log("update clicked");
+        });
         
         if($("#title").val() === '' || 
             $("#description").val() === '' ||
