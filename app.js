@@ -2,6 +2,9 @@
 //the very beginning of jQuery initiation 
 $(document).ready(() =>{
 
+    //check if user is logged in
+    // isLoggedIn()
+
     let ALL_POSTS;
     let output = '';
     let parentDiv;
@@ -191,6 +194,62 @@ $(document).ready(() =>{
     });
     //adding a post to the database starts here
 
+
+    //subscribing for emails notifications
+    $('#subscribe-form').on('submit', (e)=>{
+
+
+        e.preventDefault();
+        console.log("me clicked");
+        if($('#subscribe-email').val() === ''){
+            //sweet alert
+            Swal.fire({
+                title: 'Caution!',
+                text: 'Email field is required!',
+                type: 'error',
+                confirmButtonText: 'Ok',
+                timer:3000
+              });
+        }else{
+            const email = {
+                email : $('#subscribe-email').val()
+            }
+
+        //making AJAx POST call
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/subscribers",
+            data: email,
+            dataType: "json",
+            encode: true
+        })
+        .done(() =>{
+            // console.log("Data subscribed successfully");
+            Swal.fire({
+                title: 'Successful!',
+                text: 'Thanks for subscribing',
+                type: 'success',
+                confirmButtonText: 'Cool',
+                timer:5000
+              });
+
+            $("#subscribe-email").val('');
+
+        })
+        .fail(() =>{
+            // console.log("Error postion data");
+            Swal.fire({
+                title: 'Error!',
+                text: 'Sorry, an error occurred',
+                type: 'error',
+                confirmButtonText: 'Try again',
+                timer:3000
+              })
+        });
+
+
+        }
+    });
 
 
 });

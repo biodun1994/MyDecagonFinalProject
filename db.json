@@ -71,5 +71,27 @@
       "details": "I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.I'm using this.parentNode as the element of a function to select the parent, and I tried both this.parent.parentNode and this.parentNode.parentNode, but both simply return the direct parent.\nI'm trying to affect the div surrounding the div surrounding the 'this'. I did manage to make it work using a simple loop statement that repeats the parentNode selection twice, but I assume there's a better way.\n                                ",
       "id": 6
     }
+  ],
+  "subscribers": [
+    {
+      "email": "olapade@gmail.com",
+      "id": 1
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 2
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 3
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 4
+    },
+    {
+      "email": "biodun@gmail.om",
+      "id": 5
+    }
   ]
 }

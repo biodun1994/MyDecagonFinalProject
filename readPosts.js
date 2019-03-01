@@ -5,7 +5,7 @@ $(document).ready(()=>{
     const post = JSON.parse(localStorage.getItem('wantToReadPost'));
     // console.log(post);
 
-    document.querySelector('#login-container').innerHTML = formatPost(post);
+    document.querySelector('#blog-container').innerHTML = formatPost(post);
 
 
     function formatPost(post){

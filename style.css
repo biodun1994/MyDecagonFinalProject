@@ -35,6 +35,7 @@ body{
 
 #nav-items{
     float: right;
+    z-index: 20;
 }
 
 #nav-items li{
@@ -75,6 +76,8 @@ body{
     width: 40%;
     margin-top: 3rem;
     font-size: 1rem;
+    background: #f4f4f4;
+    border: none;
 }
 
 .subscribe input[type="submit"]{
@@ -270,8 +273,23 @@ LOGIN CSS RULES
    background-position: top;
 }
 
+#readPost-contaainer{
+    height: 84vh;
+    width: 100vw;
+    overflow: hidden;
+    /* background-image:linear-gradient(to right bottom,  rgba(40, 180, 131, 0.6),
+    rgba(255, 255, 255, 0.9)
+   ), url(images/login1.jpg); */
+   background-size: cover;
+   background-position: top;
+}
+
 .forLogin{
     position: absolute;
+    width: 100%;
+}
+
+.forReadPost{
     width: 100%;
 }
 
