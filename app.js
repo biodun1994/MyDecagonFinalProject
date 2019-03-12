@@ -5,32 +5,37 @@ $(document).ready(() =>{
     //check if user is logged in
     // isLoggedIn()
 
-    let ALL_POSTS;
-    let output = '';
-    let parentDiv;
-    //FETCHING POST FROM DB IMPLEMENTATION STARTS
-    $.getJSON("http://localhost:3000/posts")
-    .done( (data) =>{
-        ALL_POSTS = data;
-        // console.log(ALL_POSTS);
-        // console.log("ALL POSTS" + ALL_POSTS);
-        // console.log(data);
-        let reversedData = data.reverse();
-        // console.log(reversedData);
+    onPageLoad();
 
-        $(reversedData).each((index)=>{
-            // console.log(data[index]);
-            // console.log(createPost(data[index]));
-            output += createPost(data[index]);
-            // console.log(output);
+    //this function shall be called upon every time the page loads
+    function onPageLoad(){
+        let ALL_POSTS;
+        let output = '';
+        let parentDiv;
+        //FETCHING POST FROM DB IMPLEMENTATION STARTS
+        $.getJSON("http://localhost:3000/posts")
+        .done( (data) =>{
+            ALL_POSTS = data;
+            // console.log(ALL_POSTS);
+            // console.log("ALL POSTS" + ALL_POSTS);
+            // console.log(data);
+            let reversedData = data.reverse();
+            // console.log(reversedData);
+    
+            $(reversedData).each((index)=>{
+                // console.log(data[index]);
+                // console.log(createPost(data[index]));
+                output += createPost(data[index]);
+                // console.log(output);
+            });
+    
+            parentDiv = document.getElementById("posts-wrapper").innerHTML  = output;
+    
+            })
+        .fail((data)=>{
+            
         });
-
-        parentDiv = document.getElementById("posts-wrapper").innerHTML  = output;
-
-        })
-    .fail((data)=>{
-        
-    });
+    }
 
     //read more on all blog posts implemented
     //using event delegation
@@ -68,6 +73,7 @@ $(document).ready(() =>{
                     url: `http://localhost:3000/posts/${data[0].id}`,
                     success : ()=>{
                         console.log("deleted");
+                        onPageLoad();
                     }
                        
                 });

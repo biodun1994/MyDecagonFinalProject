@@ -19,8 +19,8 @@ body{
 
 #showcase{
     height: 70vh;
-    background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
-     rgba(40, 180, 131, 0.6)), url(images/mainBkg.jpg);
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8),
+     rgba(0, 0, 0, 0.8)), url(images/mainBkg.jpg);
     background-size: cover;
     background-position: bottom;
 }
@@ -41,14 +41,16 @@ body{
 #nav-items li{
     float: left;
     list-style: none;
-    padding: 0.7rem;
-    color: white;
+    padding: 0.5rem;
     font-weight: bold;
-    margin-right: .8rem;
+}
+
+#nav-items .btn-txt-color li a{
+    color: #000;
 }
 
 #nav-items li a{
-    color: white;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -64,8 +66,8 @@ body{
 .subscribe{
     margin-top: 3rem;
     height: 15em;
-    background-image: linear-gradient(to right bottom, rgba(86, 128, 234, 0.6),
-    rgba(40, 180, 131, 0.6)), url(images/hands.jpg);
+    background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.8)), url(images/hands.jpg);
         background-size: cover;
     background-position: center;
     text-align: center;
@@ -73,8 +75,9 @@ body{
 
 .subscribe input[type="email"]{
     padding: .5rem;
-    width: 40%;
-    margin-top: 3rem;
+    width: 30%;
+    border-radius: 5px;
+    margin-top: 7rem;
     font-size: 1rem;
     background: #f4f4f4;
     border: none;
@@ -82,13 +85,17 @@ body{
 
 .subscribe input[type="submit"]{
     padding: .5rem;
-    width: 10%;
+    width: 8%;
     margin-top: 1rem;
+    border-radius: 5px;
     font-size: 1rem;
-    background: black;
+    background: white;
     border: none;
     outline: none;
-    color: white;
+    color: black;
+}
+.subscribe input[type="submit"]:hover{
+    cursor: pointer;
 }
 
 .clear{
@@ -102,9 +109,9 @@ body{
 }
 
 .button-look{
-    background:#000;
-    padding: 10px;
+    border: 1.5px solid #fff;
     border-radius: .6rem;
+    margin: 0px 10px;
 }
 
 .blogPost{
@@ -266,8 +273,8 @@ LOGIN CSS RULES
     height: 84vh;
     width: 100vw;
     overflow: hidden;
-    background-image:linear-gradient(to right bottom,  rgba(40, 180, 131, 0.6),
-    rgba(255, 255, 255, 0.9)
+    background-image:linear-gradient(to right bottom,  rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.6)
    ), url(images/login1.jpg);
    background-size: cover;
    background-position: top;
@@ -302,7 +309,8 @@ LOGIN CSS RULES
 
 .blog-inputs{
     padding: .6rem;
-    border: 1.5px solid white;
+    border: 2px solid white;
+    color: white;
     border-radius: 6px;
     margin: 5px;
     width: 350px;
@@ -315,13 +323,19 @@ LOGIN CSS RULES
     top: 50%;
     left: 50%;
     transform: translate(130%, 0);
+    text-transform: uppercase;
+}
+
+#signup-form input[type = "submit"]{
+    text-transform: uppercase;
 }
 
 #login-form h3, #signup-form h3 {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     margin: 0 0 1rem .4rem;
-    border-bottom: 3px solid rgba(40, 180, 131, 0.6);
-    width: 5rem;
+    color: #fff;
+    border-bottom: 3.5px solid rgb(0, 0, 0);
+    width: 4rem;
 }
 
 .blog-button{
